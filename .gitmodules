@@ -1,0 +1,6 @@
+[submodule "php-qrcode"]
+	path = php-qrcode
+	url = https://github.com/chillerlan/php-qrcode
+[submodule "php-settings-container"]
+	path = php-settings-container
+	url = https://github.com/chillerlan/php-settings-container
