@@ -11,25 +11,25 @@ use GDO\QRCode\Module_QRCode;
 /**
  * This method renders an arbitrary QR code.
  * 
- * @TODO Image render size does not seem to supported by this lib.
- * 
- * @see https://github.com/chillerlan/php-qrcode
- * 
- * @see \GDO\QRCode\GDT_QRCode
- * 
  * @author gizmore
- * 
- * @version 6.10
- * @since 6.10
+ * @version 7.0.1
+ * @since 6.10.0
+ * @see https://github.com/chillerlan/php-qrcode
+ * @see \GDO\QRCode\GDT_QRCode
  */
 final class Render extends Method
 {
+	public function getMethodTitle() : string
+	{
+		return t('qrcode');
+	}
+	
 	public function gdoParameters() : array
 	{
-		return array(
+		return [
 			GDT_QRCode::make('data')->notNull(),
-			GDT_UInt::make('size')->initial('1024'),
-		);
+			GDT_UInt::make('size')->initial('1024')->max(4096),
+		];
 	}
 	
 	public function execute()
@@ -39,7 +39,7 @@ final class Render extends Method
 		return $this->render($data, $size);
 	}
 	
-	public function render($data, $size='1024')
+	public function render(string $data, int $size=1024)
 	{
 		$module = Module_QRCode::instance();
 		
@@ -50,6 +50,8 @@ final class Render extends Method
 			'outputType' => QRCode::OUTPUT_IMAGE_GIF,
 			'eccLevel'=> QRCode::ECC_L,
 			'imageTransparent' => false,
+			'svgWidth' => $size,
+			'svgHeight' => $size,
 		]);
 		
 		// invoke a fresh QRCode instance

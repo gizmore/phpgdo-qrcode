@@ -6,9 +6,10 @@ use GDO\Core\GDT_Template;
 
 /**
  * A QR Code is a string that renders a qrcode as cell.
+ * 
  * @author gizmore
- * @since 6.10
- * @version 6.10
+ * @version 7.0.1
+ * @since 6.10.0
  */
 final class GDT_QRCode extends GDT_String
 {
@@ -16,6 +17,7 @@ final class GDT_QRCode extends GDT_String
 	
 	protected function __construct()
 	{
+		parent::__construct();
 		$this->utf8();
 		$this->max(2048);
 	}
@@ -23,8 +25,8 @@ final class GDT_QRCode extends GDT_String
 	#########################
 	### Widget image size ###
 	#########################
-	public $qrcodeSize = '128';
-	public function qrcodeSize($size)
+	public int $qrcodeSize = 128;
+	public function qrcodeSize(int $size) : self
 	{
 		$this->qrcodeSize = $size;
 		return $this;
@@ -33,25 +35,25 @@ final class GDT_QRCode extends GDT_String
 	##############
 	### Render ###
 	##############
-	public function renderCell() : string
+	public function renderHTML() : string
 	{
-		return GDT_Template::php('QRCode', 'cell/qrcode.php', ['field'=>$this]);
+		return GDT_Template::php('QRCode', 'qrcode_html.php', ['field'=>$this]);
 	}
 	
 	#############
 	### HREFs ###
 	#############
-	public function hrefCode()
+	public function hrefCode() : string
 	{
 		$args = '&data='.urlencode($this->getVar());
 		$args .= '&size='.$this->qrcodeSize;
 		return href('QRCode', 'Render', $args);
 	}
 	
-	public function hrefCodeFullscreen()
-	{
-		$args = '&data='.urlencode($this->getVar());
-		return href('QRCode', 'Render', $args);
-	}
+// 	public function hrefCodeFullscreen() : string
+// 	{
+// 		$args = '&data='.urlencode($this->getVar());
+// 		return href('QRCode', 'Render', $args);
+// 	}
 	
 }

@@ -3,18 +3,30 @@ namespace GDO\QRCode;
 
 use GDO\Core\GDO_Module;
 use GDO\Core\GDT_Array;
-use GDO\Util\Strings;
 
+/**
+ * QRCode rendering module.
+ * 
+ * @author gizmore
+ * @version 7.0.1
+ * @since 6.5.0
+ */
 final class Module_QRCode extends GDO_Module
 {
 	public function onLoadLanguage() : void { $this->loadLanguage('lang/qrcode'); }
 	
-	public function thirdPartyFolders() : array { return ['/php-']; }
+	public function thirdPartyFolders() : array
+	{
+		return [
+			'/php-qrcode/',
+			'/php-settings-container/',
+		];
+	}
 	
 	#####################################
 	### Autoload PSR vendor emulation ###
 	#####################################
-	public function initQRCodeAutoloader()
+	public function initQRCodeAutoloader() : void
 	{
 		static $inited;
 		if (!isset($inited))
@@ -24,7 +36,7 @@ final class Module_QRCode extends GDO_Module
 		}
 	}
 	
-	public function autoload($className)
+	public function autoload(string $className) : void
 	{
 		$className = str_replace("\\", '/', $className);
 		
@@ -43,7 +55,7 @@ final class Module_QRCode extends GDO_Module
 		}
 	}
 
-	public function hookIgnoreDocsFiles(GDT_Array $ignore)
+	public function hookIgnoreDocsFiles(GDT_Array $ignore) : void
 	{
 	    $ignore->data[] = 'GDO/QRCode/php-qrcode/**/*';
 	    $ignore->data[] = 'GDO/QRCode/php-settings-container/**/*';

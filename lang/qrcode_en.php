@@ -1,4 +1,5 @@
 <?php
-return array(
+namespace GDO\QRCode\lang;
+return [
 	'qrcode' => 'QR-Code',
-);
+];
