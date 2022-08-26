@@ -5,7 +5,9 @@ use GDO\Core\GDT_String;
 use GDO\Core\GDT_Template;
 
 /**
- * A QR Code is a string that renders a qrcode as cell.
+ * A QR Code is a string that renders a qrcode as html and card.
+ * 
+ * @TODO: GDT_QRCode: as table cell, a popup with the code is displayed?
  * 
  * @author gizmore
  * @version 7.0.1
@@ -13,12 +15,14 @@ use GDO\Core\GDT_Template;
  */
 final class GDT_QRCode extends GDT_String
 {
-	public function defaultLabel() : self { return $this->label('qrcode'); }
+	public function defaultLabel() : self
+	{
+		return $this->label('qrcode');
+	}
 	
 	protected function __construct()
 	{
 		parent::__construct();
-		$this->utf8();
 		$this->max(2048);
 	}
 
@@ -49,11 +53,5 @@ final class GDT_QRCode extends GDT_String
 		$args .= '&size='.$this->qrcodeSize;
 		return href('QRCode', 'Render', $args);
 	}
-	
-// 	public function hrefCodeFullscreen() : string
-// 	{
-// 		$args = '&data='.urlencode($this->getVar());
-// 		return href('QRCode', 'Render', $args);
-// 	}
-	
+
 }

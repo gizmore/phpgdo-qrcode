@@ -1,4 +1,5 @@
 <?php
+namespace GDO\QRCode\tpl;
 /** @var $field \GDO\QRCode\GDT_QRCode **/
 ?>
 <div <?=$field->htmlID()?>

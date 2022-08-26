@@ -63,12 +63,12 @@ final class Render extends Method
 		list(, $data) = explode(',', $data);
 		$data = base64_decode($data);
 		
-		header('Content-Type: image/gif');
-		header('Content-Size: '.strlen($data));
+		hdr('Content-Type: image/gif');
+		hdr('Content-Size: '.strlen($data));
 		
 		echo $data;
 
-		die();
+		die(0);
 	}
 	
 }
