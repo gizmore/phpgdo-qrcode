@@ -7,6 +7,7 @@ use GDO\Core\GDT_UInt;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\QRCode;
 use GDO\QRCode\Module_QRCode;
+use GDO\Core\Application;
 
 /**
  * This method renders an arbitrary QR code.
@@ -66,9 +67,11 @@ final class Render extends Method
 		hdr('Content-Type: image/gif');
 		hdr('Content-Size: '.strlen($data));
 		
-		echo $data;
-
-		die(0);
+		if (!Application::instance()->isUnitTests())
+		{
+			echo $data;
+			die(0);
+		}
 	}
 	
 }
