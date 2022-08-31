@@ -51,7 +51,14 @@ final class GDT_QRCode extends GDT_String
 	{
 		$args = '&data='.urlencode($this->getVar());
 		$args .= '&size='.$this->qrcodeSize;
-		return href('QRCode', 'Render', $args);
+		return hrefNoSeo('QRCode', 'Render', $args);
+	}
+
+	public function hrefCodeFullscreen() : string
+	{
+		$args = '&data='.urlencode($this->getVar());
+		$args .= '&size=768';
+		return hrefNoSeo('QRCode', 'Render', $args);
 	}
 
 }
