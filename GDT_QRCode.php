@@ -3,6 +3,7 @@ namespace GDO\QRCode;
 
 use GDO\Core\GDT_String;
 use GDO\Core\GDT_Template;
+use GDO\QRCode\Method\Render;
 
 /**
  * A QR Code is a string that renders a qrcode as html and card.
@@ -44,6 +45,11 @@ final class GDT_QRCode extends GDT_String
 	public function renderHTML() : string
 	{
 		return GDT_Template::php('QRCode', 'qrcode_html.php', ['field'=>$this]);
+	}
+	
+	public function renderBase64()
+	{
+		return Render::renderBase64($this->getVar(), $this->qrcodeSize);
 	}
 	
 	#############

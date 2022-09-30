@@ -39,8 +39,8 @@ final class Render extends Method
 		$size = $this->gdoParameterVar('size');
 		return $this->render($data, $size);
 	}
-	
-	public function render(string $data, int $size=1024)
+
+	public static function renderBase64(string $data, int $size=1024) : string
 	{
 		$module = Module_QRCode::instance();
 		
@@ -59,9 +59,16 @@ final class Render extends Method
 		$qrcode = new QRCode($options);
 		
 		$data = $qrcode->render($data); # to DATA;SRC string
-
+		
 		list(, $data) = explode(';', $data);
 		list(, $data) = explode(',', $data);
+		return $data;
+	}
+	
+	public function render(string $data, int $size=1024)
+	{
+		$data = self::renderBase64($data, $size);
+		
 		$data = base64_decode($data);
 		
 		hdr('Content-Type: image/gif');
