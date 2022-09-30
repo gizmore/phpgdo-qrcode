@@ -23,6 +23,8 @@ final class GDT_QRCode extends GDT_String
 	protected function __construct()
 	{
 		parent::__construct();
+		$this->ascii()->caseS();
+		$this->icon = 'qrcode';
 		$this->max(2048);
 	}
 
