@@ -29,17 +29,11 @@ final class Module_QRCode extends GDO_Module
 		];
 	}
 
-	public function hookIgnoreDocsFiles(GDT_Array $ignore): void
-	{
-		$ignore->data[] = 'GDO/QRCode/php-qrcode/**/*';
-		$ignore->data[] = 'GDO/QRCode/php-settings-container/**/*';
-	}
-	
 	public function thirdPartyFolders(): array
 	{
 		return [
-			'/php-qrcode/',
-			'/php-settings-container/',
+			'php-qrcode/',
+			'php-settings-container/',
 		];
 	}
 
