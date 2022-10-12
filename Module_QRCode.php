@@ -2,7 +2,6 @@
 namespace GDO\QRCode;
 
 use GDO\Core\GDO_Module;
-use GDO\Core\GDT_Array;
 
 /**
  * QRCode rendering module.

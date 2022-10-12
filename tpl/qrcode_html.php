@@ -4,8 +4,7 @@ namespace GDO\QRCode\tpl;
 ?>
 <div <?=$field->htmlID()?>
  title="<?=html($field->getVar())?>"
- class="gdt-qr-code">
-<a
+ class="gdt-qr-code"><a
  href="<?=$field->hrefCodeFullscreen()?>"
  target="_blank"><img 
   width="<?=$field->qrcodeSize?>"
@@ -13,4 +12,3 @@ namespace GDO\QRCode\tpl;
   src="<?=$field->hrefCode()?>"
   alt="<?=t('qrcode')?>" /></a>
 </div>
- 

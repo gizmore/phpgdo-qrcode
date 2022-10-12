@@ -47,7 +47,7 @@ final class Render extends Method
 		$module->initQRCodeAutoloader();
 		
 		$options = new QROptions([
-			'version' => 5,
+// 			'version' => 5,
 			'outputType' => QRCode::OUTPUT_IMAGE_GIF,
 			'eccLevel'=> QRCode::ECC_L,
 			'imageTransparent' => false,
