@@ -16,7 +16,7 @@ use GDO\QRCode\Method\Render;
  */
 final class GDT_QRCode extends GDT_String
 {
-	public function defaultLabel() : self
+	public function defaultLabel(): static
 	{
 		return $this->label('qrcode');
 	}
@@ -33,7 +33,7 @@ final class GDT_QRCode extends GDT_String
 	### Widget image size ###
 	#########################
 	public int $qrcodeSize = 128;
-	public function qrcodeSize(int $size) : self
+	public function qrcodeSize(int $size): static
 	{
 		$this->qrcodeSize = $size;
 		return $this;
