@@ -6,17 +6,16 @@ QR Code module for
 
 ### phpgdo-qrcode: Dependencies
 
- - php-qrcode
- 
- - php-settings-container
+- php-qrcode
 
- - php-gd??
+- php-settings-container
 
+- php-gd??
 
 ### phpgdo-qrcode: License
 
 [MIT](php-qrcode/LICENSE)
-and 
+and
 [MIT](php-qrcode/LICENSE)
 and
 [MIT](LICENSE)

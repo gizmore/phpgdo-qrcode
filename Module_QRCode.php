@@ -6,19 +6,20 @@ use GDO\Core\GDO_Module;
 /**
  * QRCode rendering module.
  *
- * @author gizmore
  * @version 7.0.1
  * @since 6.5.0
+ * @author gizmore
  */
 final class Module_QRCode extends GDO_Module
 {
+
 	public string $license = 'MIT';
 
 	public function onLoadLanguage(): void
 	{
 		$this->loadLanguage('lang/qrcode');
 	}
-	
+
 	public function getLicenseFilenames(): array
 	{
 		return [
@@ -42,11 +43,11 @@ final class Module_QRCode extends GDO_Module
 	public function initQRCodeAutoloader(): void
 	{
 		static $inited;
-		if ( !isset($inited))
+		if (!isset($inited))
 		{
 			spl_autoload_register([
 				$this,
-				'autoload'
+				'autoload',
 			]);
 			$inited = true;
 		}
