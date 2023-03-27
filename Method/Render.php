@@ -4,6 +4,7 @@ namespace GDO\QRCode\Method;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use GDO\Core\Application;
+use GDO\Core\GDT;
 use GDO\Core\GDT_UInt;
 use GDO\Core\Method;
 use GDO\QRCode\GDT_QRCode;
@@ -34,7 +35,7 @@ final class Render extends Method
 		];
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		$data = $this->gdoParameterVar('data');
 		$size = $this->gdoParameterVar('size');
