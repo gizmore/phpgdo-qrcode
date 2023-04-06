@@ -54,8 +54,8 @@ final class Render extends Method
 		if (!Application::instance()->isUnitTests())
 		{
 			echo $data;
-			die(0);
 		}
+		return Application::exit();
 	}
 
 	public static function renderBase64(string $data, int $size = 1024): string
