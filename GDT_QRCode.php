@@ -31,9 +31,9 @@ final class GDT_QRCode extends GDT_String
 	### Widget image size ###
 	#########################
 
-	public function defaultLabel(): self
+	public function gdtDefaultLabel(): ?string
 	{
-		return $this->label('qrcode');
+		return 'qrcode';
 	}
 
 	public function renderHTML(): string
