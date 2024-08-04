@@ -1,6 +1,9 @@
 <?php
 namespace GDO\QRCode\Method;
 
+use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Output\QRGdImageGIF;
+use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use GDO\Core\Application;
@@ -66,8 +69,8 @@ final class Render extends Method
 
 		$options = new QROptions([
 // 			'version' => 5,
-			'outputType' => QRCode::OUTPUT_IMAGE_GIF,
-			'eccLevel' => QRCode::ECC_L,
+			'outputInterface' => QRGdImageGIF::class,
+			'eccLevel' => EccLevel::L,
 			'imageTransparent' => false,
 			'svgWidth' => $size,
 			'svgHeight' => $size,
