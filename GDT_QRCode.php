@@ -41,11 +41,16 @@ final class GDT_QRCode extends GDT_String
 		return GDT_Template::php('QRCode', 'qrcode_html.php', ['field' => $this]);
 	}
 
+    public function renderQRCode(): string
+    {
+        return Render::renderBase64($this->getVar(), $this->qrcodeSize);
+    }
+
 	##############
 	### Render ###
 	##############
 
-	public function qrcodeSize(int $size): self
+	public function cqrcodeSize(int $size): self
 	{
 		$this->qrcodeSize = $size;
 		return $this;
