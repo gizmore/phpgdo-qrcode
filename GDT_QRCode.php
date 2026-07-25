@@ -50,7 +50,7 @@ final class GDT_QRCode extends GDT_String
 	### Render ###
 	##############
 
-	public function cqrcodeSize(int $size): self
+	public function qrcodeSize(int $size): self
 	{
 		$this->qrcodeSize = $size;
 		return $this;
