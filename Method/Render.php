@@ -2,7 +2,7 @@
 namespace GDO\QRCode\Method;
 
 use chillerlan\QRCode\Common\EccLevel;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRGdImageGIF;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use GDO\Core\Application;
@@ -68,22 +68,21 @@ final class Render extends Method
 
 		$options = new QROptions([
 // 			'version' => 5,
-			'outputType' => QROutputInterface::GDIMAGE_GIF,
+			'outputInterface' => QRGdImageGIF::class,
 			'outputBase64' => true,
 			'eccLevel' => EccLevel::L,
 			'imageTransparent' => false,
 			'svgWidth' => $size,
 			'svgHeight' => $size,
 		]);
-
-		// invoke a fresh QRCode instance
 		$qrcode = new QRCode($options);
-
-		$data = $qrcode->render($data); # to DATA;SRC string
-
-		[, $data] = explode(';', $data);
-		[, $data] = explode(',', $data);
-		return $data;
+		$data = $qrcode->render($data);
+		$prefix = ';base64,';
+		if (($offset = strpos($data, $prefix)) === false)
+		{
+			throw new \RuntimeException('Unexpected QR GIF renderer output.');
+		}
+		return substr($data, $offset + strlen($prefix));
 	}
 
 }
